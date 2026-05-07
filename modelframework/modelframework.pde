@@ -11,6 +11,8 @@ final int GAMEOVER = 3;
 void setup () {
   size(800,800);
   mode = INTRO;
+  textAlign(CENTER,CENTER);
+  rectMode(CENTER);
 }
 
 void draw() {
