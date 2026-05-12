@@ -1,3 +1,10 @@
+import ddf.minim.*;
+import ddf.minim.analysis.*;
+import ddf.minim.effects.*;
+import ddf.minim.signals.*;
+import ddf.minim.spi.*;
+import ddf.minim.ugens.*;
+
 //Eric Li
 //Processing 11
 //Clicker Game
@@ -15,6 +22,8 @@ float x,y,d;
 float vx,vy;
 float angle = random(0,2*PI);
 
+int score, lives;
+
 void setup () {
   size(800,800);
   mode = INTRO;
@@ -28,6 +37,9 @@ void setup () {
   
   vx = 5*cos(angle);
   vy = 5*sin(angle);
+  
+  score = 0;
+  lives = 3;
 }
 
 //Colour Pallette
