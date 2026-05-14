@@ -22,6 +22,10 @@ float x,y,d;
 float vx,vy;
 float angle = random(0,2*PI);
 
+//Sound Variables
+Minim minim;
+AudioPlayer failure, success, music;
+
 int score, lives;
 
 void setup () {
@@ -40,6 +44,12 @@ void setup () {
   
   score = 0;
   lives = 3;
+  
+  //minim
+  minim = new Minim(this);
+  music = minim.loadFile("MUSIC.mp3");
+  failure = minim.loadFile("FAILURE.wav");
+  success = minim.loadFile("SUCCESS.wav");
 }
 
 //Colour Pallette
