@@ -15,10 +15,21 @@ void intro() {
   fill(255);
   text("START", 400, 550);
   
+  fill(10,0,216,190);
+  stroke(255);
+  rect(300,650,200,100,20);
+  fill(255);
+  text("OPTIONS", 400, 700);
+  
   noFill();
   
   //tactile
-  if(mouseX > 300 && mouseX < 500 && mouseY > 500 && mouseY < 550) {
+  if(mouseX > 300 && mouseX < 500 && mouseY > 500 && mouseY < 600) {
+    strokeWeight(200);
+  } else {
+    strokeWeight(0); 
+  }
+  if(mouseX > 300 && mouseX < 500 && mouseY > 650 && mouseY < 750) {
     strokeWeight(200);
   } else {
     strokeWeight(0); 
@@ -28,6 +39,9 @@ void intro() {
 void introClicks () {
   if (mouseX > 300 && mouseX < 500 && mouseY > 500 && mouseY < 600) {
     mode = GAME;
+  }
+  if (mouseX > 300 && mouseX < 500 && mouseY > 650 && mouseY < 750) {
+    mode = OPTION;
   }
 }
 

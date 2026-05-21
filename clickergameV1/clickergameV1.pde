@@ -9,6 +9,9 @@ import ddf.minim.signals.*;
 import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
 
+PImage lemon;
+PImage avatar;
+
 //Mode Variables 
 
 int mode;
@@ -16,6 +19,7 @@ final int INTRO = 0;
 final int GAME = 1;
 final int PAUSE = 2;
 final int GAMEOVER = 3;
+final int OPTION = 4;
 
 //Target Variables
 float x,y,d;
@@ -52,6 +56,9 @@ void setup () {
   failure = minim.loadFile("FAILURE.wav");
   success = minim.loadFile("SUCCESS.wav");
   gameover = minim.loadFile("Gameover.mp3");
+  
+  lemon = loadImage("lemon.jpg");
+  avatar = loadImage("sandrone.png");
 }
 
 //Colour Pallette
