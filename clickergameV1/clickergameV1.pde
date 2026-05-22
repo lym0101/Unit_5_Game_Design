@@ -25,6 +25,8 @@ final int OPTION = 4;
 float x,y,d;
 float vx,vy;
 float angle = random(0,2*PI);
+float sliderX;
+float radius;
 
 //Sound Variables
 Minim minim;
@@ -37,7 +39,7 @@ void setup () {
   pixelDensity(1);
   mode = INTRO;
   textAlign(CENTER,CENTER);
-  //rectMode(CENTER);
+  rectMode(CENTER);
   
   //target initialization
   x= width/2;
@@ -58,7 +60,7 @@ void setup () {
   gameover = minim.loadFile("Gameover.mp3");
   
   lemon = loadImage("lemon.jpg");
-  avatar = loadImage("sandrone.png");
+  avatar = loadImage("sandrone1.png");
 }
 
 //Colour Pallette

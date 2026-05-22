@@ -10,6 +10,7 @@ void game() {
   
   //Scoring Chart
   fill(0);
+  textSize(32);
   text("Score: " + score, width/6, 50);
   text("Lives: " + lives, width/6, 100);
   
@@ -40,7 +41,10 @@ void gameClicks () {
     mode = PAUSE;
   }else {
     lives = lives - 1;
-    if (lives == 0) mode = GAMEOVER;
+    if (lives == 0) {
+      mode = GAMEOVER;
+      lives = 3;
+    }
     failure.rewind();
     failure.play();
   }
