@@ -15,10 +15,13 @@ void game() {
   text("Lives: " + lives, width/6, 100);
   
   //display target
+  
+  if (target = dartTarget) {
   fill(255);
   stroke(0);
   strokeWeight(5);
   circle(x,y,d);
+  } else 
   
   x = x + vx;
   y = y + vy;
