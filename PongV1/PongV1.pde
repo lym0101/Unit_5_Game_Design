@@ -1,6 +1,6 @@
 //Eric Li
 //Programming 11
-//Pong
+//Pong V1
 
 //mode framework
 int mode;
@@ -13,6 +13,12 @@ final int OPTIONS  = 5;
 //entity variables
 float leftx, lefty, leftd, rightx, righty, rightd; //paddles
 float ballx, bally, balld; //ball
+
+//keyboard variables
+boolean wkey, skey, upkey, downkey;
+
+float vx, vy;
+float angle = random(0,2*PI);
 
 void setup() {
   size(1000,800);
@@ -31,6 +37,12 @@ void setup() {
   ballx = width/2;
   bally = height/2;
   balld = 100;
+  
+  //initialize keyboard variables
+  wkey = skey = upkey = downkey = false;
+  
+  vx = 5*cos(angle);
+  vy = 5*sin(angle);
 }
 
 void draw() {
