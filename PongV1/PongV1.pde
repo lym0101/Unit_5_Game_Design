@@ -17,8 +17,12 @@ float ballx, bally, balld; //ball
 //keyboard variables
 boolean wkey, skey, upkey, downkey;
 
+//ball variables
 float vx, vy;
 float angle = random(0,2*PI);
+
+//Scoring 
+int leftscore, rightscore, timer;
 
 void setup() {
   size(1000,800);
@@ -41,8 +45,8 @@ void setup() {
   //initialize keyboard variables
   wkey = skey = upkey = downkey = false;
   
-  vx = 5*cos(angle);
-  vy = 5*sin(angle);
+  vx = 7*cos(angle);
+  vy = 7*sin(angle);
 }
 
 void draw() {
