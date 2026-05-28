@@ -1,6 +1,11 @@
 void game() {
   background(0);
   
+  //center line
+  strokeWeight(5);
+  stroke(255);
+  line(width/2, 0, width/2, 800);
+  
   //paddles
   circle(leftx, lefty, leftd);
   circle(rightx,righty,rightd);
@@ -15,12 +20,20 @@ void game() {
   //ball
   circle(ballx, bally, balld);
   
-  ballx = ballx + vx;
-  bally = bally + vy;
+  //move ball
+  if (timer == 0) {
+  ballx = ballx + (vx * angle);
+  bally = bally + (vy * angle);
+  fill(255);
+  text("GO!", width/2, height/2);
+  }
   
   //bouncing
-  if( bally < balld/2 || bally > height -balld/2) {
-    vy = vy * -1;
+  if( bally < balld/2) {
+    vy = abs(vy);
+  }
+  if(bally > height -balld/2) {
+    vy = -abs(vy);
   }
   
   //Circle Paddle Collisions
@@ -38,8 +51,32 @@ void game() {
   fill(255);
   text(leftscore, width/4, 100);
   text(rightscore, 3*width/4, 100);
+  
+  if (timer > 0) {
+  fill(255);
+  text(timer/60, width/2, 100);
+  timer = timer - 1;
+  } else {
+    noFill();
+  }
+  
+  fill(255);
+  
+  //scoring
+  if(ballx < 0 - balld/2) {
+    rightscore++;
+    ballx = width/2;
+    bally = height/2;
+    timer = 240;
+  }
+  if(ballx > width + balld/2) {
+    leftscore++;
+    ballx = width/2;
+    bally = height/2;
+    timer = 240;
+  }
 }
 
 void gameClicks() {
-  
+  mode = PAUSE;
 }

@@ -22,12 +22,14 @@ float vx, vy;
 float angle = random(0,2*PI);
 
 //Scoring 
-int leftscore, rightscore, timer;
+int leftscore, rightscore;
+float timer;
 
 void setup() {
-  size(1000,800);
+  size(1300,800);
   pixelDensity(1);
-  mode = GAME;
+  textAlign(CENTER,CENTER);
+  mode = INTRO;
   
   //initialize paddles
   leftx = 0;
@@ -47,6 +49,10 @@ void setup() {
   
   vx = 7*cos(angle);
   vy = 7*sin(angle);
+  
+  //initialize score
+  rightscore = leftscore = 0;
+  timer = 240;
 }
 
 void draw() {
