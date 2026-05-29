@@ -11,19 +11,19 @@ void game() {
   circle(rightx,righty,rightd);
   
   //move ball paddles
-  if (wkey == true) lefty = lefty - 8;
-  if (skey == true) lefty = lefty + 8;
+  if (wkey == true) lefty = lefty - 10;
+  if (skey == true) lefty = lefty + 10;
   
-  if (upkey == true) righty = righty - 8;
-  if (downkey == true) righty = righty + 8;
+  if (upkey == true) righty = righty - 10;
+  if (downkey == true) righty = righty + 10;
   
   //ball
   circle(ballx, bally, balld);
   
   //move ball
   if (timer == 0) {
-  ballx = ballx + (vx * angle);
-  bally = bally + (vy * angle);
+  ballx = ballx + (vx * angle)/3;
+  bally = bally + (vy * angle)/3;
   fill(255);
   text("GO!", width/2, height/2);
   }
@@ -75,6 +75,18 @@ void game() {
     bally = height/2;
     timer = 240;
   }
+   if (lefty+leftd/2<=height-3) {
+     if (skey) lefty+=8;
+      }
+   if (lefty-leftd/2>=3) {
+     if (wkey) lefty -=8;
+      }
+   if (righty-rightd/2>=3) {
+     if (upkey) righty-=8;
+      }
+   if (righty+rightd/2<=height-3) {
+     if (downkey) righty+=8;
+   }
 }
 
 void gameClicks() {
