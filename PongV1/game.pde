@@ -11,11 +11,13 @@ void game() {
   circle(rightx, righty, rightd);
 
   //move ball paddles
-  if (wkey == true) lefty = lefty - 10;
-  if (skey == true) lefty = lefty + 10;
+  // Move left paddle — half submerged at edges
+  if (skey && lefty + leftd/2 <= height + leftd/2) lefty += 7;
+  if (wkey && lefty - leftd/2 >= -leftd/2) lefty -= 7;
 
-  if (upkey == true) righty = righty - 10;
-  if (downkey == true) righty = righty + 10;
+  // Move right paddle — half submerged at edges
+  if (downkey && righty + rightd/2 <= height + rightd/2) righty += 7;
+  if (upkey && righty - rightd/2 >= -rightd/2) righty -= 7;
 
   //ball
   circle(ballx, bally, balld);
@@ -75,17 +77,8 @@ void game() {
     bally = height/2;
     timer = 240;
   }
-  if (lefty+leftd/2<=height-3) {
-    if (skey) lefty+=7;
-  }
-  if (lefty-leftd/2>=3) {
-    if (wkey) lefty -=7;
-  }
-  if (righty-rightd/2>=3) {
-    if (upkey) righty-=7;
-  }
-  if (righty+rightd/2<=height-3) {
-    if (downkey) righty+=7;
+  if (leftscore == 3 || rightscore == 3) {
+    mode = GAMEOVER;
   }
 }
 

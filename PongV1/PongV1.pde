@@ -29,6 +29,7 @@ void setup() {
   size(1300,800);
   pixelDensity(1);
   textAlign(CENTER,CENTER);
+  rectMode(CENTER);
   mode = INTRO;
   
   //initialize paddles
@@ -47,8 +48,8 @@ void setup() {
   //initialize keyboard variables
   wkey = skey = upkey = downkey = false;
   
-  vx = 7*cos(angle);
-  vy = 7*sin(angle);
+  vx = 8;
+  vy = 7*sin(cos(angle));
   
   //initialize score
   rightscore = leftscore = 0;
