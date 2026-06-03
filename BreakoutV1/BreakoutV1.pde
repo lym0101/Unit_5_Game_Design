@@ -1,6 +1,6 @@
 //Eric Li
 //Programming 11
-//Pong V1
+//Breakout V1
 
 import ddf.minim.*;
 import ddf.minim.analysis.*;
@@ -15,7 +15,6 @@ final int INTRO    = 1;
 final int GAME     = 2;
 final int PAUSE    = 3;
 final int GAMEOVER = 4;
-final int OPTIONS  = 5;
 
 //entity variables
 float leftx, lefty, leftd, rightx, righty, rightd; //paddles
@@ -83,8 +82,6 @@ void draw() {
     pause();
   }else if (mode == GAMEOVER) {
     gameover();
-  }else if (mode == OPTIONS) {
-    options();
   }else {
     println("Mode Error: " + mode);
   }
