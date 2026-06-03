@@ -77,8 +77,12 @@ void game() {
     bally = height/2;
     timer = 240;
   }
-  if (leftscore == 3 || rightscore == 3) {
+  if (leftscore == 3) {
     mode = GAMEOVER;
+    fill(0);
+    textSize(36);
+    text("LEFT SIDE WINS!",750,400);
+    noFill();
   }
 }
 

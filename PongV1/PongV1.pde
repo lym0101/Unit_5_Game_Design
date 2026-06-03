@@ -83,8 +83,6 @@ void draw() {
     pause();
   }else if (mode == GAMEOVER) {
     gameover();
-  }else if (mode == OPTIONS) {
-    options();
   }else {
     println("Mode Error: " + mode);
   }

@@ -13,18 +13,18 @@ void intro() {
   textSize(36);
   rect(650,550,200,100,20);
   fill(255);
-  text("START", 650, 550);
+  text("1 PLAYER", 650, 550);
   
   fill(10,0,216,190);
   stroke(255);
   rect(650,700,200,100,20);
   fill(255);
-  text("OPTIONS", 650, 700);
+  text("2 PLAYER", 650, 700);
   
   noFill();
   
   //tactile
-  if(mouseX > 650 && mouseX < 850 && mouseY > 500 && mouseY < 600) {
+  if(mouseX > 650 && mouseX < 850 && mouseY > 550 && mouseY < 650) {
     strokeWeight(200);
   } else {
     strokeWeight(0); 
@@ -40,9 +40,9 @@ void introClicks () {
   if (mouseX > 650 && mouseX < 850 && mouseY > 550 && mouseY < 650) {
     mode = GAME;
   }
-  if (mouseX > 650 && mouseX < 850 && mouseY > 700 && mouseY < 800) {
-    mode = OPTIONS;
-  }
+  //if (mouseX > 650 && mouseX < 850 && mouseY > 700 && mouseY < 800) {
+  //  mode = OPTIONS;
+  //}
 }
 
 void drawSky() {
