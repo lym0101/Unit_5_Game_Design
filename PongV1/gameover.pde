@@ -34,6 +34,7 @@ void tactile(int x, int y, int w, int h) {
 }
 
 void drawGameover() {
+  strokeWeight(1);
   for (int y = 0; y < 800; y++) {
     float t = map(y, 0, 500, 0, 1);
     //                  the darkest color the gradient go -> the lightest the color go and then the amount (t)
