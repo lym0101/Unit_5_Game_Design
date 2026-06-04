@@ -1,10 +1,11 @@
 void game() {
-  background(0);
+  background(0,100,0);
 
   //center line
   strokeWeight(5);
   stroke(255);
-  line(width/2, 0, width/2, 800);
+  line(width/2, 0, width/2, 50);
+  line(width/2, 150, width/2, 800);
 
   //paddles
   circle(leftx, lefty, leftd);
@@ -77,29 +78,11 @@ void game() {
     bally = height/2;
     timer = 240;
   }
-  if (leftscore == 3) {
+  if (leftscore == 3||rightscore ==3) {
     mode = GAMEOVER;
-    fill(0);
-    textSize(36);
-    text("LEFT SIDE WINS!",750,400);
-    noFill();
   }
 }
 
 void gameClicks() {
-  //if (dist(mouseX, mouseY, x, y) < d) {
-  //  score = score + 1;
-  //  success.rewind();
-  //  success.play();
-  //} else if (dist(mouseX,mouseY,700,100) < 50) {
-  //  mode = PAUSE;
-  //}else {
-  //  lives = lives - 1;
-  //  if (lives == 0) {
-  //    mode = GAMEOVER;
-  //    lives = 3;
-  //  }
-  //  failure.rewind();
-  //  failure.play();
-  //}
+  mode = PAUSE;
 }

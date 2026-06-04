@@ -15,7 +15,6 @@ final int INTRO    = 1;
 final int GAME     = 2;
 final int PAUSE    = 3;
 final int GAMEOVER = 4;
-final int OPTIONS  = 5;
 
 //entity variables
 float leftx, lefty, leftd, rightx, righty, rightd; //paddles
@@ -34,7 +33,7 @@ float timer;
 
 //Sound Variables
 Minim minim;
-//AudioPlayer failure, success, music, gameover;
+AudioPlayer failure, success, music, gameover;
 
 void setup() {
   size(1300,800);
@@ -68,10 +67,10 @@ void setup() {
   
   //minim
   minim = new Minim(this);
-  //music = minim.loadFile("MUSIC.mp3");
-  //failure = minim.loadFile("FAILURE.wav");
-  //success = minim.loadFile("SUCCESS.wav");
-  //gameover = minim.loadFile("Gameover.mp3");
+  music = minim.loadFile("MUSIC1.mp3");
+  failure = minim.loadFile("FAILURE1.wav");
+  success = minim.loadFile("SUCCESS1.wav");
+  gameover = minim.loadFile("Gameover1.mp3");
 }
 
 void draw() {
