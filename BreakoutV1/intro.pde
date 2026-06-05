@@ -1,5 +1,5 @@
 void intro() {
-  //music.play();
+  music.play();
 }
 
 void introClicks() {

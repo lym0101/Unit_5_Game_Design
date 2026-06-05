@@ -19,6 +19,7 @@ final int GAMEOVER = 4;
 //entity variables
 float leftx, lefty, leftd, rightx, righty, rightd; //paddles
 float ballx, bally, balld; //ball
+boolean AI;
 
 //keyboard variables
 boolean wkey, skey, upkey, downkey;

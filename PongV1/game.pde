@@ -1,5 +1,5 @@
 void game() {
-  background(0,100,0);
+  background(0, 100, 0);
 
   //center line
   strokeWeight(5);
@@ -17,8 +17,17 @@ void game() {
   if (wkey && lefty - leftd/2 >= -leftd/2) lefty -= 7;
 
   // Move right paddle — half submerged at edges
-  if (downkey && righty + rightd/2 <= height + rightd/2) righty += 7;
-  if (upkey && righty - rightd/2 >= -rightd/2) righty -= 7;
+  if (AI == false) {
+    if (downkey && righty + rightd/2 <= height + rightd/2) righty += 7;
+    if (upkey && righty - rightd/2 >= -rightd/2) righty -= 7;
+  } else {
+    if (bally < righty) {
+      righty = righty - 6;
+    } 
+    if (bally > righty) {
+      righty = righty + 6;
+    }
+  }
 
   //ball
   circle(ballx, bally, balld);
@@ -28,7 +37,9 @@ void game() {
     ballx = ballx + (vx * angle)/3;
     bally = bally + (vy * angle)/3;
     fill(255);
-    text("GO!", width/2, height/2);
+    if (timer > 240 && timer< 300){
+      text("GO!", width/2, height/2);
+  }
   }
 
   //bouncing

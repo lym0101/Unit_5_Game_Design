@@ -67,10 +67,10 @@ void setup() {
   
   //minim
   minim = new Minim(this);
-  //music = minim.loadFile("MUSIC.mp3");
-  //failure = minim.loadFile("FAILURE.wav");
-  //success = minim.loadFile("SUCCESS.wav");
-  //gameover = minim.loadFile("Gameover.mp3");
+  music = minim.loadFile("MUSIC1.mp3");
+  failure = minim.loadFile("FAILURE1.wav");
+  success = minim.loadFile("SUCCESS1.wav");
+  gameover = minim.loadFile("Gameover1.mp3");
 }
 
 void draw() {
