@@ -3,25 +3,25 @@ void option() {
   background(255);
   textSize(70);
   fill(0);
-  text("OPTIONS",400,150);
+  text("OPTIONS", 400, 150);
   noFill();
-  
+
   stroke(0);
   strokeWeight(3);
 
   rectMode(CORNER);
-  
-  tactile(140,300,100,100);
-  rect(140,300,100,100);
-  
-  tactile(355,300,100,100);
-  rect(355,300,100,100);
-  
-  tactile(566,300,100,100);
-  rect(566,300,100,100);
-  
+
+  tactile(140, 300, 100, 100);
+  rect(140, 300, 100, 100);
+
+  tactile(355, 300, 100, 100);
+  rect(355, 300, 100, 100);
+
+  tactile(566, 300, 100, 100);
+  rect(566, 300, 100, 100);
+
   rectMode(CENTER);
-  
+
   //the slider (horizonal)
   fill(255);
   text("Size of target", 100, height-150);
@@ -36,9 +36,16 @@ void option() {
   line(40, (height-100), 165, (height-100));
   circle(sliderX, (height-100), 15);
 
-  
-  image(lemon, 200, 585, 60, 60);
-  image(avatar, 100,100,100,100);
+
+  image(lemon, 140, 300, 100, 100);
+  image(avatar, 355, 300, 100, 100);
+
+  if (clicked(140, 300, 100, 100)) {
+    target = lemon;
+  }
+  if (clicked(140, 300, 100, 100)) {
+    target = avatar;
+  }
 }
 
 void tactile(int x, int y, int w, int h) {
@@ -47,7 +54,7 @@ void tactile(int x, int y, int w, int h) {
     fill(#a2d2ff);
   } else {
     stroke(#03045e);
-    fill(255,255,194);
+    fill(255, 255, 194);
   }
 }
 
@@ -59,7 +66,7 @@ void optionClicks () {
 }
 
 void tactile1(float x, int y, int r) {
-  if (dist(x,y,mouseX,mouseY) < r) {
+  if (dist(x, y, mouseX, mouseY) < r) {
     stroke(#a2d2ff);
     strokeWeight(3);
   } else {
@@ -70,33 +77,31 @@ void tactile1(float x, int y, int r) {
 
 void rectButton(String text, float x, float y, float w, float h) {
   if (mouseX > x-w/2 && mouseX < x+w/2 && mouseY > y-h/2 && mouseY < y+h/2) {
-    strokeWeight(5); 
-    stroke(255, 0, 0); 
-    fill(255); 
+    strokeWeight(5);
+    stroke(255, 0, 0);
+    fill(255);
   } else {
-    strokeWeight(2); 
-    stroke(0); 
-    fill(255); 
+    strokeWeight(2);
+    stroke(0);
+    fill(255);
   }
-  textSize(50); 
-  rect(x, y, w, h); 
-  fill(0); 
-  text(text, x, y); 
-  
+  textSize(50);
+  rect(x, y, w, h);
+  fill(0);
+  text(text, x, y);
 }
-void rectButton(PImage pic, float x, float y, float w, float h){
+void rectButton(PImage pic, float x, float y, float w, float h) {
   if (mouseX > x-w/2 && mouseX < x+w/2 && mouseY > y-h/2 && mouseY < y+h/2) {
-   strokeWeight(5); 
-    stroke(255, 0, 0); 
+    strokeWeight(5);
+    stroke(255, 0, 0);
   } else {
-    strokeWeight(2); 
-    stroke(0); 
-
+    strokeWeight(2);
+    stroke(0);
   }
-  fill(255); 
-  textSize(60); 
-  rect(x, y, w, h); 
-  image(pic, x, y, w*0.75, h*0.75); 
+  fill(255);
+  textSize(60);
+  rect(x, y, w, h);
+  image(pic, x, y, w*0.75, h*0.75);
 }
 
 void controlSlider() {
@@ -108,4 +113,9 @@ void controlSlider() {
   d = map(sliderX, 40, 165, 50, 150);
   //d1 = map(sliderX, 40, 165, 50, 150);
   //d2 = map(sliderX, 40, 165, 50, 150);
+}
+
+boolean clicked(float bx, float by, float bw, float bh) {
+  //button logic
+  return mouseX > bx && mouseX < bx + bw && mouseY > by && mouseY < by + bh;
 }
