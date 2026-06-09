@@ -12,6 +12,20 @@ void gameover() {
 }
 
 void gameoverClicks () {
+  reset();
+}
+
+void reset() {
   mode = INTRO;
   music.rewind();
+  //target initialization
+  x= width/2;
+  y= height/2;
+  d= 100;
+  
+  vx = 5*cos(angle);
+  vy = 5*sin(angle);
+  
+  score = 0;
+  lives = 3; 
 }

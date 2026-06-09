@@ -16,13 +16,6 @@ void game() {
   
   //display target
   
-  if (target = dartTarget) {
-  fill(255);
-  stroke(0);
-  strokeWeight(5);
-  circle(x,y,d);
-  } else 
-  
   x = x + vx;
   y = y + vy;
   
@@ -32,6 +25,8 @@ void game() {
   }
   if( y < d/2 || y > height -d/2) {
     vy = vy * -1;
+    
+    drawButton("BACK", 20, 20, 100, 40);
   }
 }
 
@@ -51,4 +46,13 @@ void gameClicks () {
     failure.rewind();
     failure.play();
   }
+}
+
+void drawButton(String label, float bx, float by, float bw, float bh) {
+  stroke(0);
+  fill(255);
+  rect(bx, by, bw, bh, 8);
+  fill(0);
+  textSize(18);
+  text(label, bx + bw/2, by + bh/2);
 }

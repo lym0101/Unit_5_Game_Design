@@ -15,6 +15,16 @@ void game() {
   // Move left paddle — half submerged at edges
   if (skey && lefty + leftd/2 <= height + leftd/2) lefty += 7;
   if (wkey && lefty - leftd/2 >= -leftd/2) lefty -= 7;
+  
+   //move ball
+  if (timer == 0) {
+    ballx = ballx + (vx * angle)/3;
+    bally = bally + (vy * angle)/3;
+    fill(255);
+    if (timer > 240 && timer< 300){
+      text("GO!", width/2, height/2);
+  }
+  }
 
   // Move right paddle — half submerged at edges
   if (AI == false) {
@@ -31,16 +41,6 @@ void game() {
 
   //ball
   circle(ballx, bally, balld);
-
-  //move ball
-  if (timer == 0) {
-    ballx = ballx + (vx * angle)/3;
-    bally = bally + (vy * angle)/3;
-    fill(255);
-    if (timer > 240 && timer< 300){
-      text("GO!", width/2, height/2);
-  }
-  }
 
   //bouncing
   if ( bally < balld/2) {

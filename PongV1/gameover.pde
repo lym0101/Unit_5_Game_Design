@@ -19,8 +19,7 @@ void gameover() {
 }
 
 void gameoverClicks () {
-  mode = INTRO;
-  music.rewind();
+  reset();
 }
 
 void tactile(int x, int y, int w, int h) {
@@ -31,6 +30,33 @@ void tactile(int x, int y, int w, int h) {
     stroke(#03045e);
     fill(255, 255, 194);
   }
+}
+
+void reset() {
+  mode = INTRO;
+  music.rewind();
+  //initialize paddles
+  leftx = 0;
+  lefty = height/2;
+  leftd = 200;
+  rightx = width;
+  righty = height/2;
+  rightd = 200;
+  
+  //initialize ball
+  ballx = width/2;
+  bally = height/2;
+  balld = 100;
+  
+  //initialize keyboard variables
+  wkey = skey = upkey = downkey = false;
+  
+  vx = 8;
+  vy = 7*sin(cos(angle));
+  
+  //initialize score
+  rightscore = leftscore = 0;
+  timer = 240;
 }
 
 void drawGameover() {

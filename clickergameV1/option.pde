@@ -8,6 +8,8 @@ void option() {
   
   stroke(0);
   strokeWeight(3);
+
+  rectMode(CORNER);
   
   tactile(140,300,100,100);
   rect(140,300,100,100);
@@ -18,15 +20,22 @@ void option() {
   tactile(566,300,100,100);
   rect(566,300,100,100);
   
+  rectMode(CENTER);
+  
   //the slider (horizonal)
-  fill(0);
-  stroke(0);
-  strokeWeight(3);
-  line(870, 490, 980, 490);
-  tactile1(sliderX, 490, 25);
-  circle(sliderX, 490, 25);
-  radius = map(sliderX,870,980,1,40);
-  strokeWeight(3);
+  fill(255);
+  text("Size of target", 100, height-150);
+  controlSlider();
+  if (mouseX > 40 && mouseX < 165 && mouseY > height-115 && mouseY < height-85) {
+    stroke(255);
+  } else {
+    stroke(25, 100, 255);
+  }
+  fill(255);
+  strokeWeight(5);
+  line(40, (height-100), 165, (height-100));
+  circle(sliderX, (height-100), 15);
+
   
   image(lemon, 200, 585, 60, 60);
   image(avatar, 100,100,100,100);
@@ -57,4 +66,46 @@ void tactile1(float x, int y, int r) {
     stroke(#03045e);
     strokeWeight(3);
   }
+}
+
+void rectButton(String text, float x, float y, float w, float h) {
+  if (mouseX > x-w/2 && mouseX < x+w/2 && mouseY > y-h/2 && mouseY < y+h/2) {
+    strokeWeight(5); 
+    stroke(255, 0, 0); 
+    fill(255); 
+  } else {
+    strokeWeight(2); 
+    stroke(0); 
+    fill(255); 
+  }
+  textSize(50); 
+  rect(x, y, w, h); 
+  fill(0); 
+  text(text, x, y); 
+  
+}
+void rectButton(PImage pic, float x, float y, float w, float h){
+  if (mouseX > x-w/2 && mouseX < x+w/2 && mouseY > y-h/2 && mouseY < y+h/2) {
+   strokeWeight(5); 
+    stroke(255, 0, 0); 
+  } else {
+    strokeWeight(2); 
+    stroke(0); 
+
+  }
+  fill(255); 
+  textSize(60); 
+  rect(x, y, w, h); 
+  image(pic, x, y, w*0.75, h*0.75); 
+}
+
+void controlSlider() {
+  if (mousePressed && mouseX > 40 && mouseX < 165 && mouseY > height-115 && mouseY < height-85) {
+    sliderX = mouseX;
+  } else {
+    stroke(0);
+  }
+  d = map(sliderX, 40, 165, 50, 150);
+  //d1 = map(sliderX, 40, 165, 50, 150);
+  //d2 = map(sliderX, 40, 165, 50, 150);
 }
