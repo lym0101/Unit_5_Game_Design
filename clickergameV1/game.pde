@@ -30,10 +30,10 @@ void game() {
 
   //bouncing
   if (x < d/2 || x > width -d/2) {
-    vx = vx * -1;
+    vx = vx * -1.025;
   }
   if ( y < d/2 || y > height -d/2) {
-    vy = vy * -1;
+    vy = vy * -1.025;
   }
   rectMode(CORNER);
   drawButton("BACK", 20, height-60, 100, 40);

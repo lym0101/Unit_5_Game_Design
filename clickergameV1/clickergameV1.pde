@@ -11,7 +11,7 @@ import ddf.minim.ugens.*;
 
 PImage lemon;
 PImage avatar;
-int targetType = 3;
+int targetType;
 PImage target;
 
 //Mode Variables 
@@ -62,9 +62,9 @@ void setup () {
   success = minim.loadFile("SUCCESS.wav");
   gameover = minim.loadFile("Gameover.mp3");
   
-  lemon = loadImage("Lemon Transparent.png");
+  lemon = loadImage("Lemon Transparent1.png");
   avatar = loadImage("sandrone1.png");
-  targetType = 1;
+  targetType = 3;
   sliderX = 102.5;
   
   println(music, failure, success, gameover, lemon, avatar);

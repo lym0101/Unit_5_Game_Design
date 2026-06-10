@@ -9,9 +9,8 @@ void gameover() {
   text("Score: " + score, 400, 450);
   text("High Score: " + highScore, 400, 510);
   noFill();
-
-  tactile(400, 600, 100, 50);
-  rect(400, 600, 100, 50);
+  
+  text("<Click anywhere to continue>", 400, 650);
 }
 
 void gameoverClicks () {

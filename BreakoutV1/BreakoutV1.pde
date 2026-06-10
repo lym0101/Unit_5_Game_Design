@@ -3,11 +3,7 @@
 //Breakout V1
 
 import ddf.minim.*;
-import ddf.minim.analysis.*;
-import ddf.minim.effects.*;
-import ddf.minim.signals.*;
-import ddf.minim.spi.*;
-import ddf.minim.ugens.*;
+import gifAnimation.*; 
 
 //mode framework
 int mode;
@@ -16,73 +12,61 @@ final int GAME     = 2;
 final int PAUSE    = 3;
 final int GAMEOVER = 4;
 
-//entity variables
-float leftx, lefty, leftd, rightx, righty, rightd; //paddles
-float ballx, bally, balld; //ball
+//paddle (a circle)
+float paddlex, paddley, paddled;
 
-//keyboard variables
-boolean wkey, skey, upkey, downkey;
-
-//ball variables
+//ball
+float ballx, bally, balld;
 float vx, vy;
-float angle = random(0,2*PI);
 
-//Scoring 
-int leftscore, rightscore;
-float timer;
+//bricks (all circles)
+int totalBricks;
+float[] brickx, bricky, brickd;
+color[] brickcol;
+boolean[] alive;
+color[] rowColors = {#ff595e, #ff924c, #ffca3a, #8ac926, #1982c4, #6a4c93};
 
-//Sound Variables
+//scoring + lives
+int score, lives;
+boolean won;
+
+//sound
 Minim minim;
-//AudioPlayer failure, success, music, gameover;
+AudioPlayer music, bounce, success, failure, gameoversound;
+
+//gif
+Gif introGif;
 
 void setup() {
-  size(1300,800);
+  size(1300, 800);
   pixelDensity(1);
-  textAlign(CENTER,CENTER);
-  rectMode(CENTER);
-  mode = INTRO;
-  
-  //initialize paddles
-  leftx = 0;
-  lefty = height/2;
-  leftd = 200;
-  rightx = width;
-  righty = height/2;
-  rightd = 200;
-  
-  //initialize ball
-  ballx = width/2;
-  bally = height/2;
-  balld = 100;
-  
-  //initialize keyboard variables
-  wkey = skey = upkey = downkey = false;
-  
-  vx = 8;
-  vy = 7*sin(cos(angle));
-  
-  //initialize score
-  rightscore = leftscore = 0;
-  timer = 240;
-  
-  //minim
+  textAlign(CENTER, CENTER);
+
   minim = new Minim(this);
-  music = minim.loadFile("MUSIC1.mp3");
-  failure = minim.loadFile("FAILURE1.wav");
-  success = minim.loadFile("SUCCESS1.wav");
-  gameover = minim.loadFile("Gameover1.mp3");
+  music        = minim.loadFile("MUSIC1.mp3");
+  bounce       = minim.loadFile("BOUNCE1.wav");
+  success      = minim.loadFile("SUCCESS1.wav");
+  failure      = minim.loadFile("FAILURE1.wav");
+  gameoversound = minim.loadFile("Gameover1.mp3");
+
+  introGif = new Gif(this, "intro.gif");  //put intro.gif in the data folder
+  introGif.loop();
+
+  makeBricks();
+  reset();
+  mode = INTRO;
 }
 
 void draw() {
   if (mode == INTRO) {
     intro();
-  }else if (mode == GAME) {
+  } else if (mode == GAME) {
     game();
-  }else if (mode == PAUSE) {
+  } else if (mode == PAUSE) {
     pause();
-  }else if (mode == GAMEOVER) {
+  } else if (mode == GAMEOVER) {
     gameover();
-  }else {
+  } else {
     println("Mode Error: " + mode);
   }
 }

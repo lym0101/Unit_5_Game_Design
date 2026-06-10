@@ -1,6 +1,8 @@
 void option() {
   music.pause();
-  background(255);
+  
+  drawOption();
+  
   textAlign(CENTER, CENTER);
   textSize(70);
   fill(0);
@@ -28,7 +30,7 @@ void option() {
   } else {
     rect(561, 295, 110, 110);
   }
-  // ---- size slider ----
+  //size slider
   fill(0);
   textSize(25);
   text("Size of target", 100, height-150);
@@ -47,14 +49,14 @@ void option() {
     fill(255);
     stroke(0);
     strokeWeight(5);
-    circle(width/2, height-320, d);
+    circle(width/2, height-220, d);
   } else {
     imageMode(CENTER);
-    image(target, width/2, height-320, d, d);
+    image(target, width/2, height-220, d, d);
   }
-  // ---- back button ----
+  //back button
   rectMode(CENTER);
-  rectButton("BACK", 400, 700, 200, 80);
+  rectButton("BACK", 650, 700, 200, 80);
 }
 
 void optionClicks() {
@@ -70,8 +72,8 @@ void optionClicks() {
     targetType = 3;
     targetCircle();
   }
-  // BACK (drawn centered at 400,700 → corner = 300,660)
-  if (clicked(300, 660, 200, 80)) {
+  // BACK button clicks
+  if (clicked(550, 660, 200, 80)) {
     mode = INTRO;
     music.rewind();
   }
@@ -137,11 +139,22 @@ void controlSlider() {
   if (mousePressed && mouseX > 40 && mouseX < 165 && mouseY > height-115 && mouseY < height-85) {
     sliderX = mouseX;
   }
-  d = map(sliderX, 40, 165, 100, 350);
+  d = map(sliderX, 40, 165, 50, 300);
 }
 void targetCircle() {
   fill(255);
   stroke(0);
   strokeWeight(5);
   circle(x, y, d);
+}
+
+void drawOption() {
+  strokeWeight(1);
+  for (int y = 0; y < 800; y++) {
+    float t = map(y, 0, 500, 0, 1);
+    //                  the darkest color the gradient go -> the lightest the color go and then the amount (t)
+    color c = lerpColor(color(#06B6D4), color(#3B82F6), t); //gradient sky color from a sunny sky color to a darker midnight blue color
+    stroke(c); //the color of the individual lines changing color to show the gradient
+    line(0, y, width, y);
+  }
 }
