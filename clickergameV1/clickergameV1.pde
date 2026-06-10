@@ -11,6 +11,8 @@ import ddf.minim.ugens.*;
 
 PImage lemon;
 PImage avatar;
+int targetType = 3;
+PImage target;
 
 //Mode Variables 
 
@@ -32,7 +34,7 @@ float radius;
 Minim minim;
 AudioPlayer failure, success, music, gameover;
 
-int score, lives;
+int score, lives, highScore;
 
 void setup () {
   size(800,800);
@@ -46,11 +48,12 @@ void setup () {
   y= height/2;
   d= 100;
   
-  vx = 5*cos(angle);
+  vx = 6;
   vy = 5*sin(angle);
   
   score = 0;
   lives = 3;
+  highScore = 0;
   
   //minim
   minim = new Minim(this);
@@ -59,8 +62,12 @@ void setup () {
   success = minim.loadFile("SUCCESS.wav");
   gameover = minim.loadFile("Gameover.mp3");
   
-  lemon = loadImage("lemon.jpg");
+  lemon = loadImage("Lemon Transparent.png");
   avatar = loadImage("sandrone1.png");
+  targetType = 1;
+  sliderX = 102.5;
+  
+  println(music, failure, success, gameover, lemon, avatar);
 }
 
 //Colour Pallette

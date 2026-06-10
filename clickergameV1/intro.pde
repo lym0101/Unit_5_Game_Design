@@ -6,19 +6,21 @@ void intro() {
   strokeWeight(1);
   fill(0);
   textSize(72);
-  text("CLICKER GAME",400,300);
+  text("CLICKER GAME!",400,300);
   
   fill(10,0,216,190);
   stroke(255);
   textSize(36);
+  tactile(300,500,200,100);
   rect(400,550,200,100,20);
-  fill(255);
+  fill(0);
   text("START", 400, 550);
   
   fill(10,0,216,190);
   stroke(255);
+  tactile(300,650,200,100);
   rect(400,700,200,100,20);
-  fill(255);
+  fill(0);
   text("OPTIONS", 400, 700);
   
   noFill();

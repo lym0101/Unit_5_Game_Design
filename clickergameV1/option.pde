@@ -1,68 +1,92 @@
 void option() {
   music.pause();
   background(255);
+  textAlign(CENTER, CENTER);
   textSize(70);
   fill(0);
   text("OPTIONS", 400, 150);
-  noFill();
-
-  stroke(0);
-  strokeWeight(3);
-
   rectMode(CORNER);
-
+  strokeWeight(3);
+  // ---- target choice boxes ----
   tactile(140, 300, 100, 100);
   rect(140, 300, 100, 100);
-
   tactile(355, 300, 100, 100);
   rect(355, 300, 100, 100);
-
   tactile(566, 300, 100, 100);
   rect(566, 300, 100, 100);
-
-  rectMode(CENTER);
-
-  //the slider (horizonal)
-  fill(255);
+  imageMode(CORNER);
+  image(lemon, 140, 300, 100, 100);
+  image(avatar, 355, 300, 100, 100);
+  // green outline around the currently selected target
+  noFill();
+  stroke(0, 200, 0);
+  strokeWeight(6);
+  if (targetType == 1) {
+    rect(135, 295, 110, 110);
+  } else if (targetType == 2) {
+    rect(350, 295, 110, 110);
+  } else {
+    rect(561, 295, 110, 110);
+  }
+  // ---- size slider ----
+  fill(0);
+  textSize(25);
   text("Size of target", 100, height-150);
   controlSlider();
   if (mouseX > 40 && mouseX < 165 && mouseY > height-115 && mouseY < height-85) {
-    stroke(255);
+    stroke(255, 0, 0);
   } else {
     stroke(25, 100, 255);
   }
-  fill(255);
   strokeWeight(5);
-  line(40, (height-100), 165, (height-100));
-  circle(sliderX, (height-100), 15);
+  line(40, height-100, 165, height-100);
+  fill(255);
+  circle(sliderX, height-100, 15);
+  // live preview at current size
+  if (targetType == 3) {
+    fill(255);
+    stroke(0);
+    strokeWeight(5);
+    circle(width/2, height-320, d);
+  } else {
+    imageMode(CENTER);
+    image(target, width/2, height-320, d, d);
+  }
+  // ---- back button ----
+  rectMode(CENTER);
+  rectButton("BACK", 400, 700, 200, 80);
+}
 
-
-  image(lemon, 140, 300, 100, 100);
-  image(avatar, 355, 300, 100, 100);
-
+void optionClicks() {
   if (clicked(140, 300, 100, 100)) {
+    targetType = 1;
     target = lemon;
   }
-  if (clicked(140, 300, 100, 100)) {
+  if (clicked(355, 300, 100, 100)) {
+    targetType = 2;
     target = avatar;
+  }
+  if (clicked(566, 300, 100, 100)) {
+    targetType = 3;
+    targetCircle();
+  }
+  // BACK (drawn centered at 400,700 → corner = 300,660)
+  if (clicked(300, 660, 200, 80)) {
+    mode = INTRO;
+    music.rewind();
   }
 }
 
 void tactile(int x, int y, int w, int h) {
   if (mouseX > x && mouseX < x+w && mouseY > y && mouseY < y+h) {
+    strokeWeight(4);
     stroke(#42fa45);
     fill(#a2d2ff);
   } else {
+    strokeWeight(2);
     stroke(#03045e);
     fill(255, 255, 194);
   }
-}
-
-void optionClicks () {
-  if (mouseX > 300 && mouseX < 500 && mouseY > 500 && mouseY < 600) {
-    mode = INTRO;
-  }
-  music.rewind();
 }
 
 void tactile1(float x, int y, int r) {
@@ -104,18 +128,20 @@ void rectButton(PImage pic, float x, float y, float w, float h) {
   image(pic, x, y, w*0.75, h*0.75);
 }
 
-void controlSlider() {
-  if (mousePressed && mouseX > 40 && mouseX < 165 && mouseY > height-115 && mouseY < height-85) {
-    sliderX = mouseX;
-  } else {
-    stroke(0);
-  }
-  d = map(sliderX, 40, 165, 50, 150);
-  //d1 = map(sliderX, 40, 165, 50, 150);
-  //d2 = map(sliderX, 40, 165, 50, 150);
-}
-
 boolean clicked(float bx, float by, float bw, float bh) {
   //button logic
   return mouseX > bx && mouseX < bx + bw && mouseY > by && mouseY < by + bh;
+}
+
+void controlSlider() {
+  if (mousePressed && mouseX > 40 && mouseX < 165 && mouseY > height-115 && mouseY < height-85) {
+    sliderX = mouseX;
+  }
+  d = map(sliderX, 40, 165, 100, 350);
+}
+void targetCircle() {
+  fill(255);
+  stroke(0);
+  strokeWeight(5);
+  circle(x, y, d);
 }
