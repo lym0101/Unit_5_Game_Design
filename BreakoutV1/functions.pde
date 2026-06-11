@@ -22,7 +22,7 @@ void drawScore() {
 void makeBricks() {
   int rows = 6;
   totalBricks = 0;
-  for (int r = 0; r < rows; r++) totalBricks += 12 - r;   //12+11+...+7 = 57
+  for (int r = 0; r < rows; r++) totalBricks += 12 - r;   
 
   brickx   = new float[totalBricks];
   bricky   = new float[totalBricks];

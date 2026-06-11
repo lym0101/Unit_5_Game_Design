@@ -29,7 +29,7 @@ float ballx, bally, balld;
 float vx, vy;
 
 //bricks (all circles)
-int totalBricks;
+int totalBricks; //int n in video
 float[] brickx, bricky, brickd;
 color[] brickcol;
 boolean[] alive;

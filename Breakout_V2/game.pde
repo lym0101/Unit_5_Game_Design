@@ -13,8 +13,8 @@ void game() {
 
   //move ball paddles
   // Move left paddle — half submerged at edges
-  if (skey && lefty + leftd/2 <= height + leftd/2) lefty += 8;
-  if (wkey && lefty - leftd/2 >= -leftd/2) lefty -= 8;
+  if (akey && lefty + leftd/2 <= height + leftd/2) lefty += 8;
+  if (dkey && lefty - leftd/2 >= -leftd/2) lefty -= 8;
   
    //move ball
   if (timer == 0) {
@@ -28,8 +28,8 @@ void game() {
 
   // Move right paddle — half submerged at edges
   if (AI == false) {
-    if (downkey && righty + rightd/2 <= height + rightd/2) righty += 8;
-    if (upkey && righty - rightd/2 >= -rightd/2) righty -= 8;
+    if (rightkey && righty + rightd/2 <= height + rightd/2) righty += 8;
+    if (leftkey && righty - rightd/2 >= -rightd/2) righty -= 8;
   } else {
     if (bally < righty) {
       righty = righty - 5.5;

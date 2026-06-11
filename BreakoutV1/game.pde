@@ -40,13 +40,13 @@ void moveBall() {
   //walls (left, right, top)
   if (ballx - balld/2 < 0) {
     ballx = balld/2;
-    vx = -vx;
+    vx = -abs(vx);
     //bounce.rewind();
     //bounce.play();
   }
   if (ballx + balld/2 > width) {
     ballx = width - balld/2;
-    vx = -vx;
+    vx = -abs(vx);
     //bounce.rewind();
     //bounce.play();
   }
