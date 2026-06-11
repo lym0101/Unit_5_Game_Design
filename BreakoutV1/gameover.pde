@@ -1,24 +1,30 @@
 void gameover() {
-  music.pause();
-  gameover.play();
-  background(255,0,0);
-  textSize(70);
-  fill(0,255,255);
-  text("GAME OVER!",650,300);
-  noFill();
-}
+  //music.pause();
+  //gameoversound.play();
 
-void gameoverClicks () {
-  mode = INTRO;
-  music.rewind();
-}
-
-void tactile(int x, int y, int w, int h) {
-  if (mouseX > x && mouseX < x+w && mouseY > y && mouseY < y+h) {
-    stroke(#42fa45);
-    fill(#a2d2ff);
+  if (won) {
+    background(#1a7431);
+    fill(#ffca3a);
+    textSize(80);
+    text("YOU WIN!", width/2, 300);
   } else {
-    stroke(#03045e);
-    fill(255,255,194);
+    background(#6a040f);
+    fill(0, 255, 255);
+    textSize(80);
+    text("GAME OVER!", width/2, 300);
   }
+
+  fill(255);
+  textSize(36);
+  text("Final Score: " + score, width/2, 420);
+  text("Click to return to the menu", width/2, 490);
+}
+
+void gameoverClicks() {
+  //full reset: score, lives, paddle, ball, velocity, all bricks back
+  reset();
+  //gameoversound.pause();
+  //gameoversound.rewind();
+  //music.rewind();
+  mode = INTRO;
 }

@@ -32,10 +32,10 @@ void game() {
     if (upkey && righty - rightd/2 >= -rightd/2) righty -= 7;
   } else {
     if (bally < righty) {
-      righty = righty - 6;
+      righty = righty - 5.25;
     } 
     if (bally > righty) {
-      righty = righty + 6;
+      righty = righty + 5.25;
     }
   }
 

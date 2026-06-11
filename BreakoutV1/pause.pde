@@ -7,7 +7,5 @@ void pause() {
 }
 
 void pauseClicks () {
-  if (dist(mouseX,mouseY,700,100) < 50) {
     mode = GAME;
-  }
 }
