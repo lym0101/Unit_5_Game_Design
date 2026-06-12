@@ -42,21 +42,21 @@ void reset() {
   rightx = width;
   righty = height/2;
   rightd = 200;
-  
+
   //initialize ball
   ballx = width/2;
   bally = height/2;
   balld = 100;
-  
+
   //initialize keyboard variables
   wkey = skey = upkey = downkey = false;
-  
+
   vx = 8;
   vy = 7*sin(cos(angle));
-  
+
   //initialize score
   rightscore = leftscore = 0;
-  timer = 240;
+  timer = 180;
 }
 
 void drawGameover() {
@@ -64,7 +64,7 @@ void drawGameover() {
   for (int y = 0; y < 800; y++) {
     float t = map(y, 0, 500, 0, 1);
     //                  the darkest color the gradient go -> the lightest the color go and then the amount (t)
-    color c = lerpColor(color(255,0,0), color(255,255,0), t);
+    color c = lerpColor(color(255, 0, 0), color(255, 255, 0), t);
     stroke(c); //the color of the individual lines changing color to show the gradient
     line(0, y, width, y);
   }

@@ -8,34 +8,22 @@ void intro() {
   textSize(72);
   text("PONG!", 650, 300);
 
-  tactile(650, 550, 200, 100);
-  fill(10, 0, 216, 190);
+  tactile(550, 500, 200, 100);
+  //fill(10, 0, 216, 190);
   stroke(255);
   textSize(36);
   rect(650, 550, 200, 100, 20);
-  fill(255);
+  fill(0);
   text("1 PLAYER", 650, 550);
 
-  tactile(650, 700, 200, 100);
-  fill(10, 0, 216, 190);
+  tactile(550, 650, 200, 100);
+  //fill(10, 0, 216, 190);
   stroke(255);
   rect(650, 700, 200, 100, 20);
-  fill(255);
+  fill(0);
   text("2 PLAYER", 650, 700);
-
   noFill();
-
 }
-  //tactile
-  // void tactile(int x, int y, int w, int h) {
-  //  if (mouseX > x && mouseX < x+w && mouseY > y && mouseY < y+h) {
-  //    stroke(#42fa45);
-  //    fill(#a2d2ff);
-  //  } else {
-  //    stroke(#03045e);
-  //    fill(255, 255, 194);
-  //  }
-  //}
 
 void introClicks () {
   if (mouseX > 550 && mouseX < 750 && mouseY > 500 && mouseY < 600) {

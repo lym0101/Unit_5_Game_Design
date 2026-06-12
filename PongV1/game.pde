@@ -8,6 +8,8 @@ void game() {
   line(width/2, 150, width/2, 800);
 
   //paddles
+  fill(255);
+  stroke(0);
   circle(leftx, lefty, leftd);
   circle(rightx, righty, rightd);
 
@@ -15,15 +17,15 @@ void game() {
   // Move left paddle — half submerged at edges
   if (skey && lefty + leftd/2 <= height + leftd/2) lefty += 8;
   if (wkey && lefty - leftd/2 >= -leftd/2) lefty -= 8;
-  
-   //move ball
+
+  //move ball
   if (timer == 0) {
-    ballx = ballx + (vx * angle)/3;
-    bally = bally + (vy * angle)/3;
+    ballx = ballx + (vx * angle)/2.5;
+    bally = bally + (vy * angle)/2.5;
     fill(255);
-    if (timer > 240 && timer< 300){
+    if (timer > 240 && timer< 300) {
       text("GO!", width/2, height/2);
-  }
+    }
   }
 
   // Move right paddle — half submerged at edges
@@ -33,7 +35,7 @@ void game() {
   } else {
     if (bally < righty) {
       righty = righty - 5.5;
-    } 
+    }
     if (bally > righty) {
       righty = righty + 5.5;
     }
@@ -56,8 +58,8 @@ void game() {
     vy = (bally - lefty)/9.75;
   }
   if (dist (ballx, bally, rightx, righty) <= balld/2 + rightd/2) {
-    vx = (ballx - rightx)/10;
-    vy = (bally - righty)/10;
+    vx = (ballx - rightx)/9.75;
+    vy = (bally - righty)/9.75;
   }
 
   //scoreboard
@@ -92,8 +94,24 @@ void game() {
   if (leftscore == 3||rightscore ==3) {
     mode = GAMEOVER;
   }
+  rectMode(CORNER);
+  drawButton("HOME", 20, height-60, 100, 40);
+  rectMode(CENTER);
 }
 
 void gameClicks() {
-  mode = PAUSE;
+  if (mouseX > 20 && mouseX < 120 && mouseY > height-60 && mouseY < height-20) {
+    mode = INTRO;
+  } else {
+    mode = PAUSE;
+  }
+}
+
+void drawButton(String label, float bx, float by, float bw, float bh) {
+  stroke(0);
+  fill(255);
+  rect(bx, by, bw, bh, 8);
+  fill(0);
+  textSize(18);
+  text(label, bx + bw/2, by + bh/2);
 }

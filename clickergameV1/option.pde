@@ -9,7 +9,7 @@ void option() {
   text("OPTIONS", 400, 150);
   rectMode(CORNER);
   strokeWeight(3);
-  // ---- target choice boxes ----
+  //target choice boxes
   tactile(140, 300, 100, 100);
   rect(140, 300, 100, 100);
   tactile(355, 300, 100, 100);
@@ -19,6 +19,10 @@ void option() {
   imageMode(CORNER);
   image(lemon, 140, 300, 100, 100);
   image(avatar, 355, 300, 100, 100);
+  fill(255);
+  circle(616, 350, 80);
+  noFill();
+  
   // green outline around the currently selected target
   noFill();
   stroke(0, 200, 0);

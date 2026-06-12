@@ -8,18 +8,17 @@ void game() {
   line(width/2, 150, width/2, 800);
 
   //paddles
-  circle(leftx, lefty, leftd);
-  circle(rightx, righty, rightd);
+  circle(px, py, pd);
 
-  //move ball paddles
+  //move b paddles
   // Move left paddle — half submerged at edges
-  if (akey && lefty + leftd/2 <= height + leftd/2) lefty += 8;
-  if (dkey && lefty - leftd/2 >= -leftd/2) lefty -= 8;
+  if (akey && py + pd/2 <= height + pd/2) py += 8;
+  if (dkey && py - pd/2 >= -pd/2) py -= 8;
   
-   //move ball
+   //move b
   if (timer == 0) {
-    ballx = ballx + (vx * angle)/3;
-    bally = bally + (vy * angle)/3;
+    bx = bx + (vx * angle)/3;
+    by = by + (vy * angle)/3;
     fill(255);
     if (timer > 240 && timer< 300){
       text("GO!", width/2, height/2);
@@ -27,37 +26,38 @@ void game() {
   }
 
   // Move right paddle — half submerged at edges
-  if (AI == false) {
+  //if (AI == false) {
     if (rightkey && righty + rightd/2 <= height + rightd/2) righty += 8;
     if (leftkey && righty - rightd/2 >= -rightd/2) righty -= 8;
-  } else {
-    if (bally < righty) {
-      righty = righty - 5.5;
-    } 
-    if (bally > righty) {
-      righty = righty + 5.5;
-    }
   }
+  //} else {
+  //  if (by < righty) {
+  //    righty = righty - 5.5;
+  //  } 
+  //  if (by > righty) {
+  //    righty = righty + 5.5;
+  //  }
+  //}
 
   //ball
-  circle(ballx, bally, balld);
+  circle(bx, by, bd);
 
   //bouncing
-  if ( bally < balld/2) {
+  if ( by < bd/2) {
     vy = abs(vy);
   }
-  if (bally > height -balld/2) {
+  if (by > height -bd/2) {
     vy = -abs(vy);
   }
 
   //Circle Paddle Collisions
-  if (dist (ballx, bally, leftx, lefty) <= balld/2 + leftd/2) {
-    vx = (ballx - leftx)/9.75;
-    vy = (bally - lefty)/9.75;
+  if (dist (bx, by, px, lefty) <= bd/2 + leftd/2) {
+    vx = (bx - px)/9.75;
+    vy = (by - lefty)/9.75;
   }
-  if (dist (ballx, bally, rightx, righty) <= balld/2 + rightd/2) {
-    vx = (ballx - rightx)/10;
-    vy = (bally - righty)/10;
+  if (dist (bx, by, rightx, righty) <= bd/2 + rightd/2) {
+    vx = (bx - rightx)/10;
+    vy = (by - righty)/10;
   }
 
   //scoreboard
@@ -77,16 +77,16 @@ void game() {
   fill(255);
 
   //scoring
-  if (ballx < 0 - balld/2) {
+  if (bx < 0 - bd/2) {
     rightscore++;
-    ballx = width/2;
-    bally = height/2;
+    bx = width/2;
+    by = height/2;
     timer = 240;
   }
-  if (ballx > width + balld/2) {
+  if (bx > width + bd/2) {
     leftscore++;
-    ballx = width/2;
-    bally = height/2;
+    bx = width/2;
+    by = height/2;
     timer = 240;
   }
   if (leftscore == 3||rightscore ==3) {

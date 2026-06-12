@@ -48,7 +48,7 @@ void setup () {
   y= height/2;
   d= 100;
   
-  vx = 6;
+  vx = 7;
   vy = 5*sin(angle);
   
   score = 0;

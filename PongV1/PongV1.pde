@@ -64,7 +64,7 @@ void setup() {
   
   //initialize score
   rightscore = leftscore = 0;
-  timer = 240;
+  timer = 180;
   
   //minim
   minim = new Minim(this);
@@ -72,6 +72,8 @@ void setup() {
   failure = minim.loadFile("FAILURE1.wav");
   success = minim.loadFile("SUCCESS1.wav");
   gameover = minim.loadFile("Gameover1.mp3");
+  
+  println(music, failure, success, gameover);
 }
 
 void draw() {

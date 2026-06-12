@@ -17,9 +17,7 @@ final int PAUSE    = 3;
 final int GAMEOVER = 4;
 
 //entity variables
-float leftx, lefty, leftd, rightx, righty, rightd; //paddles
-float ballx, bally, balld; //ball
-boolean AI;
+float px, py, pd, bx, by, bd;
 
 //keyboard variables
 boolean akey, dkey, leftkey, rightkey;
@@ -29,7 +27,7 @@ float vx, vy;
 float angle = random(0,2*PI);
 
 //Scoring 
-int leftscore, rightscore;
+int score;
 float timer;
 
 //Sound Variables
@@ -44,17 +42,12 @@ void setup() {
   mode = INTRO;
   
   //initialize paddles
-  leftx = 0;
-  lefty = height/2;
-  leftd = 200;
-  rightx = width;
-  righty = height/2;
-  rightd = 200;
-  
-  //initialize ball
-  ballx = width/2;
-  bally = height/2;
-  balld = 100;
+  px = width/2;
+  py = height ;
+  pd = 100;
+  bx = width/2 + 100;
+  by = height/2;
+  bd = 40;
   
   //initialize keyboard variables
   akey = dkey = leftkey = rightkey = false;
@@ -63,8 +56,8 @@ void setup() {
   vy = 7*sin(cos(angle));
   
   //initialize score
-  rightscore = leftscore = 0;
-  timer = 240;
+  score = 0;
+  timer = 180;
   
   //minim
   minim = new Minim(this);
@@ -72,6 +65,8 @@ void setup() {
   failure = minim.loadFile("FAILURE1.wav");
   success = minim.loadFile("SUCCESS1.wav");
   gameover = minim.loadFile("Gameover1.mp3");
+  
+  println(music, failure, success, gameover);
 }
 
 void draw() {
