@@ -47,7 +47,7 @@ void setup() {
   
   //initialize paddles
   px = width/2;
-  py = height ;
+  py = height;
   pd = 100;
   bx = width/2;
   by = 5*height/8;

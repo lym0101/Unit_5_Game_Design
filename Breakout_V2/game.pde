@@ -6,17 +6,18 @@ void game() {
 
   //move paddles
   // Move left paddle — half submerged at edges
-  if (akey && px + pd/2 <= width + pd/2) px += 8;
-  if (dkey && px - pd/2 >= width - pd/2) px -= 8;
-
-  //move paddle
-  if (timer == 0) {
-    bx = bx + (vx * angle)/3;
-    by = by + (vy * angle)/3;
-    fill(255);
-    if (timer > 240 && timer< 300) {
-      text("GO!", width/2, height/2);
-    }
+  if (akey    && px - pd/2 > 0) px -= 8;
+  if (dkey    && px + pd/2 < width - bd/2) px += 8;
+  if (leftkey  && px - pd/2 > 0) px -= 8;
+  if (rightkey && px + pd/2 < width + bd/2) px += 8;
+  
+  //if (timer == 0) {
+  //  bx = bx + (vx * angle)/3;
+  //  by = by + (vy * angle)/3;
+  //  fill(255);
+  //  if (timer > 240 && timer< 300) {
+  //    text("GO!", width/2, height/2);
+  //}
     //bricks
     //circle(x[0], y[0], bd);
     //circle(x[1], y[1], bd);
@@ -27,7 +28,6 @@ void game() {
       circle(x[i],y[i],bd);
       i++;
     } 
-  }
 
   // Move right paddle — half submerged at edges
   if (rightkey && px + pd/2 <= width + pd/2) px += 8;
@@ -70,26 +70,18 @@ void game() {
   }
 
   fill(255);
-  
-  }
 
-//  //scoring
-//  if (bx < 0 - bd/2) {
-//    rightscore++;
-//    bx = width/2;
-//    by = height/2;
-//    timer = 240;
-//  }
-//  if (bx > width + bd/2) {
-//    leftscore++;
-//    bx = width/2;
-//    by = height/2;
-//    timer = 240;
-//  }
-//  if (leftscore == 3||rightscore ==3) {
-//    mode = GAMEOVER;
-//  }
-//}
+  //scoring
+  if (by < 0 - bd/2) {
+    score++;
+    bx = width/2;
+    by = height/2;
+    timer = 180;
+  }
+  if (score == 3) {
+    mode = GAMEOVER;
+  }
+}
 
 void gameClicks() {
   mode = PAUSE;
