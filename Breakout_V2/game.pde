@@ -43,6 +43,12 @@ void game() {
   if (by > height -bd/2) {
     vy = -abs(vy);
   }
+  if ( bx < bd/2) {
+    vx = abs(vx);
+  }
+  if (bx > width -bd/2) {
+    vx = -abs(vx);
+  }
 
   //Circle Paddle Collisions
   if (dist (bx, by, px, py) <= bd/2 + pd/2) {

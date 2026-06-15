@@ -16,26 +16,8 @@ void intro() {
   fill(255);
   text("START", width/2, 550);
 
-  //tactile(650, 700, 200, 100);
-  //fill(10, 0, 216, 190);
-  //stroke(255);
-  //rect(650, 700, 200, 100, 20);
-  //fill(255);
-  //text("2 PLAYER", 650, 700);
-
   noFill();
-
 }
-  //tactile
-  // void tactile(int x, int y, int w, int h) {
-  //  if (mouseX > x && mouseX < x+w && mouseY > y && mouseY < y+h) {
-  //    stroke(#42fa45);
-  //    fill(#a2d2ff);
-  //  } else {
-  //    stroke(#03045e);
-  //    fill(255, 255, 194);
-  //  }
-  //}
 
 void introClicks () {
   if (mouseX > width/2 - 100 && mouseX < width/2 + 100 && mouseY > 500 && mouseY < 600) {
