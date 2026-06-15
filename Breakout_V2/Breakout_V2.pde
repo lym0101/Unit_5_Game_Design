@@ -30,12 +30,16 @@ float angle = random(0,2*PI);
 int score;
 float timer;
 
+//Brick Variables
+int[] x;  //declaration
+int[] y;
+
 //Sound Variables
 Minim minim;
 AudioPlayer failure, success, music, gameover;
 
 void setup() {
-  size(1300,800);
+  size(800,800);
   pixelDensity(1);
   textAlign(CENTER,CENTER);
   rectMode(CENTER);
@@ -45,8 +49,8 @@ void setup() {
   px = width/2;
   py = height ;
   pd = 100;
-  bx = width/2 + 100;
-  by = height/2;
+  bx = width/2;
+  by = 5*height/8;
   bd = 40;
   
   //initialize keyboard variables
@@ -67,6 +71,22 @@ void setup() {
   gameover = minim.loadFile("Gameover1.mp3");
   
   println(music, failure, success, gameover);
+  
+  //set up array of bricks
+  x = new int[4];  //instantiation
+  y = new int[4];
+
+  x[0] = 100;
+  y[0] = 100;
+
+  x[1] = 400;
+  y[1] = 100;
+
+  x[2] = 700;
+  y[2] = 100;
+  
+  x[2] = 100;
+  y[2] = 200;
 }
 
 void draw() {

@@ -7,56 +7,19 @@ void gameover() {
   text("GAME OVER!", 650, 300);
   noFill();
 
-  if (leftscore > rightscore) {
-    text("LEFT SIDE \n WINS!", 650, 500);
-    success.rewind();
-    success.play();
-  } else {
-    text("RIGHT SIDE \n WINS!", 650, 500);
-    success.rewind();
-    success.play();
-  }
+  //if (leftscore > rightscore) {
+  //  text("LEFT SIDE \n WINS!", 650, 500);
+  //  success.rewind();
+  //  success.play();
+  //} else {
+  //  text("RIGHT SIDE \n WINS!", 650, 500);
+  //  success.rewind();
+  //  success.play();
+  //}
 }
 
 void gameoverClicks () {
   reset();
-}
-
-void tactile(int x, int y, int w, int h) {
-  if (mouseX > x && mouseX < x+w && mouseY > y && mouseY < y+h) {
-    stroke(#42fa45);
-    fill(#a2d2ff);
-  } else {
-    stroke(#03045e);
-    fill(255, 255, 194);
-  }
-}
-
-void reset() {
-  mode = INTRO;
-  music.rewind();
-  //initialize paddles
-  leftx = 0;
-  lefty = height/2;
-  leftd = 200;
-  rightx = width;
-  righty = height/2;
-  rightd = 200;
-  
-  //initialize ball
-  ballx = width/2;
-  bally = height/2;
-  balld = 100;
-  
-  //initialize keyboard variables
-  akey = dkey = leftkey = rightkey = false;
-  
-  vx = 8;
-  vy = 7*sin(cos(angle));
-  
-  //initialize score
-  rightscore = leftscore = 0;
-  timer = 240;
 }
 
 void drawGameover() {

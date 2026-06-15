@@ -5,23 +5,23 @@ void intro() {
 
   strokeWeight(1);
   fill(0);
-  textSize(72);
-  text("PONG!", 650, 300);
+  textSize(52);
+  text("BREAKKKKKKOUT!", width/2, 300);
 
-  tactile(650, 550, 200, 100);
+  tactile(300, 550, 200, 100); // not working currently
   fill(10, 0, 216, 190);
   stroke(255);
   textSize(36);
-  rect(650, 550, 200, 100, 20);
+  rect(width/2, 550, 200, 100, 20);
   fill(255);
-  text("1 PLAYER", 650, 550);
+  text("START", width/2, 550);
 
-  tactile(650, 700, 200, 100);
-  fill(10, 0, 216, 190);
-  stroke(255);
-  rect(650, 700, 200, 100, 20);
-  fill(255);
-  text("2 PLAYER", 650, 700);
+  //tactile(650, 700, 200, 100);
+  //fill(10, 0, 216, 190);
+  //stroke(255);
+  //rect(650, 700, 200, 100, 20);
+  //fill(255);
+  //text("2 PLAYER", 650, 700);
 
   noFill();
 
@@ -38,17 +38,10 @@ void intro() {
   //}
 
 void introClicks () {
-  if (mouseX > 550 && mouseX < 750 && mouseY > 500 && mouseY < 600) {
+  if (mouseX > width/2 - 100 && mouseX < width/2 + 100 && mouseY > 500 && mouseY < 600) {
     mode = GAME;
     music.pause();
     music.rewind();
-    AI = true;
-  }
-  if (mouseX > 550 && mouseX < 750 && mouseY > 650 && mouseY < 750) {
-    mode = GAME;
-    music.pause();
-    music.rewind();
-    AI = false;
   }
 }
 
