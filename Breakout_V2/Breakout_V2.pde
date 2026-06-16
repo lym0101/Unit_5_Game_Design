@@ -17,14 +17,14 @@ final int PAUSE    = 3;
 final int GAMEOVER = 4;
 
 //entity variables
-float px, py, pd, bx, by, bd;
+float px, py, pd, bx, by, bd, brickd;
 
 //keyboard variables
 boolean akey, dkey, leftkey, rightkey;
 
 //ball variables
 float vx, vy;
-float angle = random(0,2*PI);
+//float angle = random(0,2*PI);
 
 //Scoring 
 int score;
@@ -33,6 +33,10 @@ float timer;
 //Brick Variables
 int[] x;  //declaration
 int[] y;
+int n;
+int tempx, tempy;
+boolean [] alive;
+int lives;
 
 //Sound Variables
 Minim minim;
@@ -50,14 +54,16 @@ void setup() {
   py = height;
   pd = 100;
   bx = width/2;
-  by = 5*height/8;
-  bd = 40;
+  by = 6*height/8 +20 ;
+  bd = 20;
+  brickd = 40;
+  lives = 3;
   
   //initialize keyboard variables
   akey = dkey = leftkey = rightkey = false;
   
-  vx = 8;
-  vy = 7*sin(cos(angle));
+  vx = 0;
+  vy = 7;
   
   //initialize score
   score = 0;
@@ -73,20 +79,26 @@ void setup() {
   println(music, failure, success, gameover);
   
   //set up array of bricks
-  x = new int[4];  //instantiation
-  y = new int[4];
+  n = 35; //5*7
+  x = new int[n];  //instantiation
+  y = new int[n];
+  alive = new boolean [n];
 
-  x[0] = 100;
-  y[0] = 100;
+  tempx = 100;
+  tempy = 75;
 
-  x[1] = 400;
-  y[1] = 100;
-
-  x[2] = 700;
-  y[2] = 100;
-  
-  x[3] = 100;
-  y[3] = 200;
+  int i = 0;
+  while (i < n) {
+    x[i] = tempx;
+    y[i] = tempy;
+    alive[i] = true;
+    tempx = tempx + 100;
+    if (tempx == width) {
+      tempx = 100;
+      tempy = tempy + 100;
+    }
+    i = i + 1;
+  }
 }
 
 void draw() {

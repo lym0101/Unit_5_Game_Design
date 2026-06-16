@@ -2,20 +2,19 @@ void gameover() {
   music.pause();
   gameover.play();
   drawGameover();
-  textSize(70);
+  //textSize(70);
   fill(0, 255, 255);
-  text("GAME OVER!", 650, 300);
-  noFill();
+  //text("GAME OVER!", 650, 300);
 
-  //if (leftscore > rightscore) {
-  //  text("LEFT SIDE \n WINS!", 650, 500);
-  //  success.rewind();
-  //  success.play();
-  //} else {
-  //  text("RIGHT SIDE \n WINS!", 650, 500);
-  //  success.rewind();
-  //  success.play();
-  //}
+  if (score > 3) {
+    text("YOU \n WIN!", width/2, 500);
+    success.rewind();
+    success.play();
+  } else if (lives <= 0) {
+    text("YOU \n LOSE!", width/2, 500);
+    failure.rewind();
+    failure.play();
+  }
 }
 
 void gameoverClicks () {
